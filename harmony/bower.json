@@ -1,0 +1,8 @@
+{
+  "name": "harmony",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "~3.2.0",
+    "traceur": "~0.0.81"
+  }
+}

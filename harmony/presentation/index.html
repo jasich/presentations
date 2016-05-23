@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>ES6, A Look Into Your Future</title>
+
+		<meta name="description" content="ES6, A Look Into Your Future">
+		<meta name="author" content="Jason Sich">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>ES6</h1>
+					<h3>A Look Into Your Future</h3>
+					<p>
+						<small>Created by <a href="http://words-async.com">Jason Sich</a> / <a href="http://twitter.com/jasich">@jasich</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>What is ES6?</h2>
+					<p>
+						<ul>
+							<li>ECMAScript is the standard for the JavaScript language</li>
+							<li>ES6 is the coming 6th edition of standard</li>
+							<li>Implemented by vendors (Chrome, Firefox, Node.js, IE)</li>
+							<li>Only a draft spec now, expected to be finalized in 2015</li>
+						</ul>
+					</p>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>History: In the beginning</h2>
+						<ul>
+							<li>Created by Brendan Eich at Netscape mid 90's</li>
+							<li>Became a thing</li>
+							<li>Got standardized with ECMA</li>
+							<li>TC39 is the technical committee in charge</li>
+						</ul>
+					</section>
+					<section>
+						<h2>History: Ch Cha Changes</h2>
+						<ul>
+							<li>v2 for ISO</li>
+							<li>v3 brought try/catch, Regex, &amp; other</li>
+							<li>v4 stalled out</li>
+						</ul>
+					</section>
+					<section>
+						<h2>History: Not to be</h2>
+						<ul>
+						<li>Netscape tanked, Microsoft soared, &amp; dev stopped</li>
+						<li>Started again in 2005</li>
+						<li>Committee split into two</li>
+						<ul>
+							<li>ES4 committee looked to make major changes</li>
+							<li>Subcommittee focused on smaller incremental change (ES3.1)</li>
+						</ul>
+						</ul>
+					</section>
+					<section>
+						<h2>History: Harmony</h2>
+						<ul>
+							<li>In 2008 the groups were brought back together</li>
+							<li>ES4 was abandoned, wanted to avoid confusion</li>
+							<li>ES5 was created as a compromise, mostly based on ES3.1</li>
+							<li>ES6 is a work to harmonize TC39 &amp; the ECMAScript language</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h2>What's in ES6?</h2>
+					<small>
+						arrows, classes, enhanced object literals, template strings, destructuring,
+						default + rest + spread, let + const, iterators + for..of, generators,
+						unicode, modules, module loaders, map + set + weakmap + weakset, proxies,
+						symbols, subclassable built-ins, promises, math + number + string + object APIs,
+						binary and octal literals, reflect api, tail calls
+					</small>
+					<p>
+						Checkout <a href="https://github.com/lukehoban/es6features">github.com/lukehoban/es6features</a> for the list.
+					</p>
+				</section>
+
+				<section>
+					<h2>3 Things to talk about today</h2>
+					<ul>
+						<li class="fragment">Modules</li>
+						<li class="fragment">Classes</li>
+						<li class="fragment">Generators/Iterators</li>
+						<li class="fragment">other stuff too</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Code Example</h2>
+				</section>
+
+				<section>
+					<h2>Current Support</h2>
+					<ul>
+						<li>Browsers</li>
+						<li>Node</li>
+						<li>Compliers/Polyfils</li>
+						<li>Checkout the <a href="http://kangax.github.io/compat-table/es6/">ES6 Compatibility Table</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>How to Support it</h2>
+					<ul>
+						<li>Use a compiler to compile ES6 code to ES6
+							<ul>
+								<li>Like <a href="https://github.com/google/traceur-compiler">github.com/google/traceur-compiler</a></li>
+								<li>Traceur can precompile files to ES5 using node.js</li>
+								<li>Or it can compile at runtime (like my example code)</li>
+							</ul>
+						</li>
+						<li>Use polyfils to use a subset of features you want</li>
+						<li>Ask people to turn on experimental flags?</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Who's Using it?</h2>
+					<ul>
+						<li>Ember
+							<ul>
+								<li>Using ES6 modules</li>
+							</ul>
+						</li>
+						<li>Angular
+							<ul>
+								<li>Using ES6 modules &amp; classes</li>
+								<li>Adding annottation support for AtScript via Traceur</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+				<section style="text-align: left;">
+					<h1>THE END</h1>
+					<p>
+						Presentation &amp; Source code at
+						<a href="https://github.com/jasich/harmony">github.com/jasich/harmony</a>
+					</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

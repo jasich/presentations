@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Introd to the Express Web Framework</title>
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Intro to Express</h1>
+					<h3>Web Application Framework for Node</h3>
+					<p>
+						<small>Created by <a href="http://words-async.com">Jason Sich</a> / <a href="http://twitter.com/jasich">@jasich</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Let's make a Web App!</h2>
+					<pre>
+						<code data-trim contenteditable>
+// Install the express generator
+$ npm install -g express-generator
+
+// Create a new express app that uses Less &amp; Jade!
+$ express helloGrNodeDev
+
+$ cd ./helloGrNodeDev
+
+// Install dependencies for express
+$ npm install
+
+// Run it!
+$ npm start
+...
+Express server listening on port 3000
+						</code>
+					</pre>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>Well that was almost too easy</h2>
+						<p>
+							While running the express generator I had 2
+							issues that I had to fix before being able to load the main page.
+						</p>
+					</section>
+					<section>
+						<h2>Modules</h2>
+						<p>
+							There are a ton of modules out there, but not all of
+							them get updated in a timely manner.
+						</p>
+						<p>
+							When dependencies break your app it can be painful to fix.
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Default File Structure</h2>
+						<pre>
+ public   => Static directory to serve up files from
+  - images
+  - javascripts
+  - stylesheets
+ routes   => Define your routing here
+ views   => Contains html views
+ app.js   => Express server
+ package.json   => Normal npm pacakge file
+						</pre>
+						<p>
+							This structure can be modified to suit your needs.  Express does not
+							force any conventions on you.
+						</p>
+					</section>
+
+					<section>
+							<h2>Simple Server</h2>
+							<pre>
+								<code data-trim contenteditable>
+var express = require('express');
+var app = express();
+
+app.get('/hello', function(req, res){
+  res.send('Hello World');
+});
+
+var server = app.listen(3000, function() {
+    console.log('Listening on port %d', server.address().port);
+});
+								</code>
+							</pre>
+					</section>
+
+					<section>
+						<h2>Serving Files Statically</h2>
+						<pre>
+							<code data-trim contenteditable>
+var path = require('path');
+
+// Serve static files directly from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>Using Dynamic Views</h2>
+						<pre>
+							<code data-trim contenteditable>
+// Sets the location of our template files for views
+// This is where all the jade templates go
+app.set('views', path.join(__dirname, 'views'));
+
+// Sets the view engine to 'jade' because we're so Emo
+app.set('view engine', 'jade');
+
+// For HTTP GET requests serve up the index view
+// Set the title to 'Express'
+app.get('/', function(req, res){
+	res.render('index', { title: 'Express' });
+});
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>All Together Now</h2>
+						<pre>
+							<code data-trim contenteditable>
+var express = require('express'),
+    path = require('path');
+
+var app = express();
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', function(req, res){
+  res.render('index', { title: 'Express' });
+});
+
+app.listen(3000, function() {
+  console.log('Listening on port %d', server.address().port);
+});
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>Example Jade Template</h2>
+						<pre>
+// index.jade
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    h1= title
+    p Welcome to #{title}
+						</pre>
+					</section>
+
+				</section>
+
+				<section>
+
+					<section>
+						<h2>It Needs an API</h2>
+						<p>
+							Let's say we are using a front-end JS framework and need to serve up
+							some data in JSON.
+						</p>
+					</section>
+
+					<section>
+						<h2>Shut the Front Door, That Easy?</h2>
+						<pre>
+							<code data-trim contenteditable>
+// Registers a handler for an HTTP GET request to '/animals'
+app.get('/animals', function(req, res){
+  var animals = [
+    { name: 'Shark Owl' },
+    { name: 'Liger' },
+    { name: 'Zebroid' }
+  ];
+
+  // Just send the array as a response
+  res.send(animals);
+});
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>And a Post?</h2>
+						<pre>
+							<code data-trim contenteditable>
+.
+app.use(express.bodyParser());
+.
+// Registers a handler for an HTTP POST request to '/animals'
+app.post('/animals', function(req, res){
+  var newAnimal = req.body;
+
+  // let the know that things are cool
+  res.send(201, {success: true});
+});
+							</code>
+						</pre>
+					</section>
+
+				</section>
+
+				<section>
+
+					<section>
+						<h2>What's up with app.use()?</h2>
+						<p>
+							It registers middleware in your Express application. Middleware is
+							additional functionality injected into request handling.
+						</p>
+						<p>
+							There is an order to middleware.  If one piece of middleware services a request, the
+							request is considered handled and the rest of the middleware is not
+							used.
+						</p>
+					</section>
+
+					<section
+						<p>
+							For example we can register the 'express.static' middleware to
+							serve up static files for requests.
+						</p>
+						<pre>
+							<code data-trim contenteditable>
+app.use(express.static(path.join(__dirname, 'public')));
+							</code>
+						</pre>
+					</section>
+
+					<section
+						<p>
+							Or we can define our own:
+						</p>
+						<pre>
+							<code data-trim contenteditable>
+app.use(function(req, res, next) {
+  if (!req.get('authorization')) {
+    res.Send(403, "Not Allowed Son, Better Luck Next Time");
+  } else {
+    next();
+  }
+});
+							</code>
+						</pre>
+					</section>
+
+				</section>
+
+				<section>
+					<h2>The End</h2>
+					<h3>BY Jason Sich</h3>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

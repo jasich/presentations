@@ -1,0 +1,14 @@
+.header {
+  background-color : $yellow;
+  height           : 120px;
+  text-align       : center;
+  border-bottom    : 3px solid $lightGrey;
+}
+
+  .header-title {
+    color         : $orange;
+    font-family   : $heading-font;
+    font-weight   : 700;
+    margin-bottom : 0px;
+    font-size     : 32px;
+  }

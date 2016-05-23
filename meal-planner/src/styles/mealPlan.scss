@@ -1,0 +1,89 @@
+$meal-plan-selection-inner-size: 120px;
+
+.meal-plan {
+  height     : 100px;
+  width      : 1400px;
+
+  margin     : 0px auto;
+  margin-top : -100px;
+}
+
+  .meal-plan-selection {
+    height     : 200px;
+    width      : 200px;
+    float      : left;
+    text-align : center;
+  }
+
+    .meal-plan-selection-outer {
+      height                : 150px;
+      width                 : 150px;
+
+      margin-top            : 25px;
+      margin-left           : 25px;
+
+      -moz-border-radius    : 75px;
+      -webkit-border-radius : 75px;
+
+      background-color      : $white;
+      border                : 2px solid $green;
+    }
+
+    .meal-plan-selection-outer.hovering {
+      background-color: $green;
+    }
+
+    .meal-plan-selection-outer.removal:hover {
+      background-color: $orange;
+    }
+
+    .meal-plan-selection-inner {
+      height                : $meal-plan-selection-inner-size;
+      width                 : $meal-plan-selection-inner-size;
+
+      margin-top            : 14px;
+      margin-left           : 14px;
+
+      -moz-border-radius    : 70px;
+      -webkit-border-radius : 70px;
+
+      background-color      : $white;
+      border                : 1px solid $lightGrey;
+    }
+
+    .meal-plan-selection-inner img {
+      height                : ($meal-plan-selection-inner-size - 1);
+      width                 : ($meal-plan-selection-inner-size - 1);
+
+      -moz-border-radius    : 70px;
+      -webkit-border-radius : 70px;
+
+      border                : 1px solid $lightGrey;
+    }
+
+    .meal-plan-selection-text {
+      line-height : 30px;
+
+      font-family : $copy-font;
+      color       : $medGrey;
+    }
+
+    .meal-plan-selection-name {
+      font-family : $heading-font;
+      color       : $orange;
+
+      font-size: 12px;
+    }
+
+    .meal-plan-selection-action-text {
+      font-size   : 10px;
+      font-family : $copy-font;
+      color       : $lightGrey;
+
+      height      : $meal-plan-selection-inner-size;
+      line-height : $meal-plan-selection-inner-size;
+    }
+
+    .meal-plan-selection-image {
+      cursor: pointer;
+    }

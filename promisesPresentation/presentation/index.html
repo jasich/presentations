@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Promises</title>
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+		<!-- Main presentation settings -->
+		<link rel="stylesheet" href="css/main.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Promises</h1>
+					<h3>Never gonna give you up</h3>
+					<h3>Never gonna let you down</h3>
+					<h3>Never gonna tell a lie and hurt you</h3>
+					<p>
+						<small>Created by <a href="http://words-async.com">Jason Sich</a> / <a href="http://twitter.com/jasich">@jasich</a></small>
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>What is a promise?</h2>
+						<p>
+							A promise is an object that represents the result of an asychronous
+							operation, which may or may not have happened.  They provide methods
+							for control flow to handle the callback of an asynchronous operation.
+						</p>
+					</section>
+					<section>
+						<h2>Why would you want that?</h2>
+						<p>
+							So that you can start returning data from your functions instead
+							of injecting high-level code into low-level code (callbacks).
+						</p>
+					</section>
+					<section>
+						<h2>Why would you want that? (cont...)</h2>
+						<p>
+							Consider how much more powerful it is to return results to high
+							level code, rather than injecting functionality into low-level
+							code.
+						</p>
+						<p>You get more...</p>
+						<ul>
+							<li>Control</li>
+							<li>Flexibility</li>
+							<li>Better Code Readability</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h2>Terminology</h2>
+
+					<h3>Resolution</h3>
+					<ul>
+						<li>Promises only get resolved once</li>
+						<li>resolved - Async operation has occurred</li>
+						<li>unresolved - Async operation has NOT occurred YET</li>
+					</ul>
+
+					<h3>Fulfillment</h3>
+					<ul>
+						<li>fulfilled - When a promise is resolved successfully</li>
+						<li>rejected - When a promise is NOT resolved successfully</li>
+					</ul>
+
+					<h3>Other</h3>
+					<ul>
+						<li>thenable - You can chain any function that returns a value after the
+						initial then</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>How do I promise?</h2>
+					<p>
+						Well they aren't quite native in node yet (in beta).  But there are many
+						npm packages that allow you to use them.
+					</p>
+
+					<ul>
+						<li><a href="https://www.npmjs.org/package/q">q</a></li>
+						<li><a href="https://www.npmjs.org/package/promise">promise</a></li>
+						<li><a href="https://www.npmjs.org/package/node-promise">node-promise</a></li>
+					</ul>
+
+					<p>
+						When looking at promise libraries try to get something that conforms to the
+						<a href="https://github.com/promises-aplus/promises-spec">Promises/A+</a> spec
+					</p>
+				</section>
+
+				<section>
+					<h2>Control Flow</h2>
+					<p>Promises provide methods for control flow.</p>
+
+					<ul>
+						<li>then()</li>
+						<li>catch()</li>
+						<li>done()</li>
+						<li>others</li>
+						<li>names/availability depend on spec implementation</li>
+					</ul>
+
+				</section>
+
+				<section>
+					<h2>Examples</h2>
+				</section>
+
+				<section>
+					<h2>The End</h2>
+					<p>
+						<small>Created by <a href="http://words-async.com">Jason Sich</a></small>
+					</p>
+					<p>
+						<small><a href="http://twitter.com/jasich">@jasich</a> on Twitter</small>
+					</p>
+					<p>
+						<small><a href="https://github.com/jasich">jasich</a> on GitHub</small>
+					</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

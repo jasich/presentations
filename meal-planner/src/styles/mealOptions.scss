@@ -1,0 +1,84 @@
+.meal-options {
+  width        : 1400px;
+  margin-top   : 110px;
+  margin-left  : auto;
+  margin-right : auto;
+  padding      : 20px;
+}
+
+  .meal-options-header {
+    overflow: auto;
+    margin-bottom : 10px;
+    margin-left   : 25px;
+    margin-right   : 25px;
+  }
+
+  .meal-options-header-title {
+    color         : $darkBlue;
+    font-family   : $heading-font;
+    font-weight   : 700;
+    font-size     : 24px;
+
+    height: 40px;
+    line-height: 40px;
+    width: 150px;
+    float: left;
+  }
+
+  .meal-options-header-filter-input {
+    height      : 40px;
+    width       : 400px;
+    margin-left : 25px;
+    float: right;
+
+    font-family : $copy-font;
+    color       : $darkGrey;
+    font-size   : 18px;
+
+    outline-width: 1px;
+    outline-color: $darkBlue;
+  }
+
+  .meal-options-filter-input::-webkit-input-placeholder,
+  .meal-options-filter-input:-moz-placeholder,
+  .meal-options-filter-input::-moz-placeholder,
+  .meal-options-filter-input:-ms-input-placeholder {
+   color: $veryLightGrey;
+  }
+
+  .meal-options-list {
+    padding: 20px 0;
+  }
+
+  .meal-options-item-container {
+    width   : 300px;
+    float   : left;
+    padding : 0 25px;
+  }
+
+  .meal-options-item {
+    border        : 1px solid $lightGrey;
+    cursor        : pointer;
+    margin-bottom : 20px;
+  }
+
+  .meal-options-item > img {
+    width: 298px;
+  }
+
+  .meal-options-item-details {
+    background-color : $veryLightGrey;
+    padding          : 15px 8px;
+  }
+
+  .meal-options-item-details-title {
+    color           : $darkBlue;
+    font-family     : $heading-font;
+    margin-bottom   : 0px;
+    font-size       : 18px;
+    text-decoration : none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
